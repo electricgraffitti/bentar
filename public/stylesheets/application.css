@@ -550,6 +550,10 @@ ul.bullet_list li {
 .show_project {
 	height: 50px;
 }
+.convenience_listing a{
+	color: #D5B487;
+  font-size: 130%;
+}
 /***************Forms***************/
 .form_wrap {
 	width: 600px;

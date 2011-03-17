@@ -8,6 +8,10 @@ class HomeController < ApplicationController
     
   end
   
+  def convenience_store
+    
+  end
+  
   def privacy
     
   end

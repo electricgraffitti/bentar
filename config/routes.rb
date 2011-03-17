@@ -20,6 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.services "bentar-services", :controller => "services", :action => "index"
   map.contact "contact-bentar-development", :controller => "contact", :action => "index"
   map.about "about-bentar-development", :controller => 'home', :action => 'about_us'
+  map.convenience "bentar-convenience-stores", :controller => 'home', :action => 'convenience_store'
   map.privacy "bentar-development-privacy-statement", :controller => "home", :action => "privacy"
   map.clients "bentar-client-list", :controller => "home", :action => "clients_list"
   map.dashbaord "bentar-admin-dashboard", :controller => "admins", :action => "index"
