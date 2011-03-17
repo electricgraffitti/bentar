@@ -1,0 +1,13 @@
+<div class="main_with_side full_20_wrap">
+<% testimonials.each do |testimonial| %>
+<div class="testimonial_list">    
+  <p>
+    "<%=h testimonial.content %>"
+  </p>
+  <div class="signature">
+    <div>~<%= testimonial.name %> <%= testimonial.title if testimonial.title %></div>
+    <div><%= testimonial.company %></div>
+  </div>
+</div>
+<% end %>
+</div>

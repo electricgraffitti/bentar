@@ -1,0 +1,11 @@
+<div class="testimonial_wrap">
+  <h3>Testimonials</h3>
+    <p><%= testimonial.content %></p> 
+    <div class="signature">
+      <p> ~<%= testimonial.name %> <%= testimonial.title if testimonial.title %></p>
+      <p><%= testimonial.company %></p>
+    </div>
+  <p>
+    <%= link_to "See more satisfied clients here....", testimonials_path %>
+  </p>
+</div>

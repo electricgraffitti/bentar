@@ -1,0 +1,28 @@
+<p>
+  <b>Title:</b>
+  <%=h @pic.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @pic.description %>
+</p>
+
+<p>
+  <b>Main display:</b>
+  <%=h @pic.main_display %>
+</p>
+
+<p>
+  <b>Interior:</b>
+  <%=h @pic.interior %>
+</p>
+
+<p>
+  <b>Exterior:</b>
+  <%=h @pic.exterior %>
+</p>
+
+
+<%= link_to 'Edit', edit_pic_path(@pic) %> |
+<%= link_to 'Back', pics_path %>

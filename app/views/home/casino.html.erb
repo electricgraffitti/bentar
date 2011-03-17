@@ -1,0 +1,7 @@
+<% content_for :banner do %>
+  <%= render :partial => 'projects/banner' %>
+<% end %>
+<div id="tabs" class="full_20_wrap">
+  <h1>Bentar Projects</h1>
+  <%= render :partial => 'projects/index_project', :locals => {:projects => @casinos} %>
+</div>

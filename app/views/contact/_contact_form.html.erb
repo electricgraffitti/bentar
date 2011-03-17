@@ -1,0 +1,46 @@
+<% form_for(@associate, :url => { :action => "contacts_mailer" }) do |f| %>
+  <%= f.error_messages %>
+
+<div class="form_wrap">  
+  <p>
+    <%= f.label :name, "* Name" %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :business_name, "* Business Name" %><br />
+    <%= f.text_field :business_name %>
+  </p>
+  <p>
+    <%= f.label :email, "* Email Address" %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :phone, "Phone (ex - 7021234567)" %><br />
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.label :street %><br />
+    <%= f.text_field :street %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= label :state, "State" %><br />
+    <%= collection_select :associate, :state_id, State.all, :id, :full_name %>
+  </p>
+  <p>
+    <%= f.label :zipcode %><br />
+    <%= f.text_field :zipcode %>
+  </p>
+  <p>
+    <%= f.label :message, "Message" %><br />
+    <%= f.text_area :message, :rows => 10, :cols => 67 %>
+  </p>
+  </div>
+  <div class="clear"></div>
+	<div class="content_wrap">
+    <%= f.submit 'Send Request', :class => "btn", :title => "Submit Your Message to Bentar Development" %>
+	</div>
+<% end %>

@@ -1,0 +1,7 @@
+<div class="thumbs">
+<% unless show_pics.nil? %>
+<% show_pics.each do |p| %>
+  <div class="project_thumb_wrap"><%= link_to(image_tag(p.asset.url(:thumb)), "#{p.asset.url(:full)}", :title => p.title)%></div>
+<% end %>
+<% end %>
+</div>

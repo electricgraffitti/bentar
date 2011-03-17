@@ -1,0 +1,23 @@
+<div class="full_20_wrap"><p>
+  <span class="bold white">Content:</span>
+  <%=h @testimonial.content %>
+</p>
+
+<p>
+  <span class="bold white">Name:</span>
+  <%=h @testimonial.name %>
+</p>
+
+<p>
+  <span class="bold white">Title:</span>
+  <%=h @testimonial.title %>
+</p>
+
+<p>
+  <span class="bold white">Company:</span>
+  <%=h @testimonial.company %>
+</p>
+
+
+<%= link_to 'Edit', edit_testimonial_path(@testimonial) %> |
+<%= link_to 'Back', testimonials_path %></div>

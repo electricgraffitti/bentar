@@ -1,0 +1,11 @@
+<% content_for :banner do %>
+  <%= render :partial => 'testimonials/banner' %>
+<% end %>
+<% if current_admin %>
+<%= render :partial => "admins/admin_testimonials", :locals => {:testimonials => @testimonials} %>
+<% else %>
+<%= render :partial => "testimonials/testimonial_list", :locals => {:testimonials => @testimonials} %>
+<% content_for :sidebar do %>
+  <%= render :partial => 'home/about_sidebar' %>
+<% end %>
+<% end %>

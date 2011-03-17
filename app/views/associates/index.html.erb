@@ -1,0 +1,35 @@
+<div class="full_20_wrap">
+<h1>Bentar Associates</h1>
+<table id="associates_table" class="display"> 
+  <thead>  
+    <tr>
+      <th>Name</th>
+      <th>Business Name</th>
+      <th>Email</th>
+      <th>Message</th>
+      <th>Phone</th>
+      <th>View</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @associates.each do |associate| %>
+  <tr>
+    <td><%=h associate.name %></td>
+    <td><%=h associate.business_name %></td>
+    <td><%=h associate.email %></td>
+    <% if associate.message %>
+    <td><%=h truncate(associate.message, :length => 150 ) %></td>
+    <% else %>
+    <td> </td>
+    <% end %>
+    <td><%=h associate.phone %></td>
+    <td><%= link_to 'View', associate_path(associate) %></td>
+    <td><%= link_to 'Delete', associate, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<%= link_to 'New Associate', new_associate_path %>
+</div>

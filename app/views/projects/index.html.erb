@@ -1,0 +1,29 @@
+<% page_title("Projects ") %>
+<% content_for :banner do %>
+  <%= render :partial => 'projects/banner' %>
+<% end %>
+<div class="full_20_wrap">
+  <h1>Bentar Projects</h1>
+  <div id="tabs">  
+    <ul class="tab_nav">
+      <div class="nav_center">
+        <li><%= link_to "Bars & Restaurants", "#bars"  %></li>
+        <li><%= link_to "Retail & Office", "#retail"  %></li>
+        <li><%= link_to "Casino & Hospitality", "#casino" %></li>
+        <li><%= link_to "Fuel Stations & C-Stores", "#cstore" %></li>
+      </div>
+    </ul>
+    <div id="bars">
+      <%= render :partial => 'index_project', :locals => {:projects => @bars} %>
+    </div>
+    <div id="retail">
+      <%= render :partial => 'index_project', :locals => {:projects => @retails} %>
+    </div>
+    <div id="casino">
+      <%= render :partial => 'index_project', :locals => {:projects => @casinos} %>
+    </div>
+    <div id="cstore">
+      <%= render :partial => 'index_project', :locals => {:projects => @cstores} %>
+    </div>
+  </div>
+</div>

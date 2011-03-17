@@ -1,0 +1,32 @@
+<div class="full_20_wrap">
+  <h1>Bentar Projects List</h1>
+  <table id="projects_table" class="display">
+    <thead>  
+      <tr>
+        <th>Title</th>
+        <th>Category Type</th>
+        <th>Description</th>
+        <th>View Project Page</th>
+        <th>Add Pictures</th>
+        <th>Edit Project</th>
+        <th>Delete Project</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <td><%=h project.title %></td>
+          <td><%=h project.category.category_type %></td>
+          <td><%=h project.description %></td>
+          <td><%= link_to 'View Project', project %></td>
+          <td><%= link_to 'Add Pictures', new_pic_path %></td>
+          <td><%= link_to 'Edit Project', edit_project_path(project) %></td>
+          <td><%= link_to 'Delete Project', project, :confirm => 'Are you sure?', :method => :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<%= link_to 'Setup New project', new_project_path %>
+</div>

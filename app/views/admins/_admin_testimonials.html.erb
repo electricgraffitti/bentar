@@ -1,0 +1,30 @@
+<div class="full_20_wrap">
+<h1>Bentar Testimonials</h1>
+
+<table id="testimonials_index" class="display">
+  <thead>
+    <tr>    
+      <th>Content</th>
+      <th>Name</th>
+      <th>Title</th>
+      <th>Company</th>
+      <th>View</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% testimonials.each do |testimonial| %>
+      <tr>
+        <td class="content"><%=h truncate(testimonial.content, :length => 140) %></td>
+        <td class="name"><%=h testimonial.name %></td>
+        <td class="title"><%=h testimonial.title %></td>
+        <td class="company"><%=h testimonial.company %></td>
+        <td><%= link_to 'View', testimonial %></td>
+        <td><%= link_to 'Edit', edit_testimonial_path(testimonial) %></td>
+        <td><%= link_to 'Delete', testimonial, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New testimonial', new_testimonial_path %></div>

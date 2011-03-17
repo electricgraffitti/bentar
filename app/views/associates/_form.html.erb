@@ -1,0 +1,42 @@
+<% form_for(@associate) do |f| %>
+  <%= f.error_messages %>
+
+<div class="form_wrap">  
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :business_name %><br />
+    <%= f.text_field :business_name %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.label :street %><br />
+    <%= f.text_field :street %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= label :state, "State" %><br />
+    <%= collection_select :associate, :state_id, State.all, :id, :full_name %>
+  </p>
+  <p>
+    <%= f.label :zipcode %><br />
+    <%= f.text_field :zipcode %>
+  </p>
+  </div>
+  <div class="clear"></div>
+  <p class="submit">
+    <%= f.submit 'Submit', :class => "btn" %>
+  </p>
+<% end %>

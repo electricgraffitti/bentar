@@ -1,0 +1,12 @@
+<% projects.each do |project| %>
+<div class="projects_index_wrap">
+  <% unless project.pics.blank? %>   
+  <h4><%= project.title %></h4>
+    <% if project.pics.main_pic.nil? %>
+      <%= link_to image_tag(project.pics.first.asset.url(:thumb)), project_path(project) %>
+    <% else %>
+      <%= link_to image_tag(project.pics.main_pic.first.asset.url(:thumb)), project_path(project) %>
+    <% end %>
+  <% end %>
+</div>
+<% end %>

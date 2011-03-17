@@ -1,0 +1,50 @@
+<div class="full_20_wrap">
+<p>
+  <b>Name:</b>
+  <%=h @associate.name %>
+</p>
+
+<p>
+  <b>Business name:</b>
+  <%=h @associate.business_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @associate.email %>
+</p>
+<% if @associate.message %>
+<p>
+  <b>Message:</b>
+  <%=h @associate.message %>
+</p>
+<% end %>
+<p>
+  <b>Phone:</b>
+  <%=h @associate.phone %>
+</p>
+
+<p>
+  <b>Street:</b>
+  <%=h @associate.street %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @associate.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @associate.state_id %>
+</p>
+
+<p>
+  <b>Zipcode:</b>
+  <%=h @associate.zipcode %>
+</p>
+
+
+<%= link_to 'Edit', edit_associate_path(@associate) %> |
+<%= link_to 'Back', associates_path %>
+</div>

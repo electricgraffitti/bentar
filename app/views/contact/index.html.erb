@@ -1,0 +1,32 @@
+<% meta_keywords("contact bentar development nevada construction services")%>
+<% meta_description("Bentar Development") %>
+<% page_title("Contact Us ") %>
+
+<% content_for :banner do %>
+  <%= render :partial => 'contact/banner' %>
+<% end %>
+
+<div class="main_with_side full_20_wrap">
+  <%= render :partial => 'contact/contact_form', :locls => {:associate => @associate} %>
+  <div class="testimonial_list">  
+    <p>
+        "One of the most rewarding benefits of working hand-in-hand in the field with subcontractors and the suppliers is that we have close encounters with many fine companies and their outstanding people. We all get to know each other and that creates strong bonds"
+    </p>
+    <div class="signature">
+      <div>~Chi Chi Bengochea - President/Owner</div>
+      <div>Bentar Development</div>
+    </div>
+  </div>
+  <div class="testimonial_list"> 
+  <p>
+    <h4>Bentar Development</h4>
+    3042 S. Durango Drive<br/>
+    Las Vegas, Nevada 89117<br/>
+    Phone: 702.366.1605<br/>
+    Fax: 702.387.1008
+  </p>
+  </div>
+</div>
+<% content_for :sidebar do %>
+  <%= render :partial => 'contact/contact_sidebar' %>
+<% end %>

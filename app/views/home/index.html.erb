@@ -1,0 +1,10 @@
+<% content_for :banner do %>
+  <%= render :partial => 'layouts/home_banner' %>
+<% end %>
+
+<%= render :partial => "home/project_scroll" %>
+
+<% content_for :sub_boxes do %>
+  <%= render :partial => 'home/testimonials', :locals => {:testimonial => @testimonial} %>
+  <%= render :partial => 'home/about_us_box' %>
+<% end %>

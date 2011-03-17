@@ -1,0 +1,21 @@
+<title><%= h(yield(:title) || "Welcome To ") %> | Bentar Development</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<meta name="description" content="<%= h(yield(:description) || "Bentar Development is an all encompassing construction company based in Las Vegas Nevada. We specialize in New Construction, Remodels, Design-Builds, Tenant Improvements, as well as site analysis and so much more.") %>">
+<meta name="keywords" content="<%= h(yield(:keywords) || "Construction, Remodels, tenant improvement, design-build, site analysis, general contracting") %>">
+<meta name="copyright" content="Copyright 2009 Bentar Development">
+<meta name="title" CONTENT="Bentar Development">
+<link ref="shortcut icon" href="favicon.ico"   type="image/ico" />
+
+<%#= ******** CSS ********** %>
+<%= stylesheet_link_tag 'reset-fonts-grids', 'jquiwidgets', '960', 'alerts/jquery.alerts', :cache => true %>
+<%= stylesheet_link_tag 'application' %>
+<!--[if IE ]>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/IE6.css" />
+<![endif]-->
+
+<%#= ******** JAVASCRIPTS ********** %>
+<script src="http://cdn.jquerytools.org/1.1.2/full/jquery.tools.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+
+<%= javascript_include_tag 'jquery.livequery', 'datatables', 'jquery.easing', 'jQueryTimer', 'jquery.alerts', 'jquery.validate', 'cube_crossfade', :cache => true %>
+<%= javascript_include_tag  'bentar_validations', 'application' %>

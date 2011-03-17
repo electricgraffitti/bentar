@@ -1,0 +1,39 @@
+/*
+
+.nav1 {
+  background: url('../images/bentar_nav2.png') 0px -123px;
+}
+.nav1.highlight:hover, li.nav1 span.hover {
+  background: #804205 url('../images/bentar_nav2.png') 0px 1px;
+}
+#main_nav ul li a#home.active {
+  background: url('../images/bentar_nav2.png') 0px -60px;
+}
+.nav2 {
+  background: url('../images/bentar_nav2.png') -233px -123px;
+}
+.nav2.highlight:hover, li.nav2 span.hover {
+  background: #804205 url('../images/bentar_nav2.png') -233px 1px;
+}
+#main_nav ul li a#projects.active {
+  background: url('../images/bentar_nav2.png') -233px -60px;
+}
+.nav3 {
+  background: url('../images/bentar_nav2.png') -466px -123px;
+}
+.nav3.highlight:hover, li.nav3 span.hover {
+  background: #804205 url('../images/bentar_nav2.png') -466px 1px;
+}
+#main_nav ul li a#services.active {
+  background: url('../images/bentar_nav.png') -466px -60px;
+}
+.nav4 {
+  background: url('../images/bentar_nav.png') -699px -123px;
+}
+.nav4.highlight:hover, li.nav4 span.hover {
+  background: #804205 url('../images/bentar_nav.png') -699px 1px;
+}
+#main_nav ul li a#contact.active {
+  background: url('../images/bentar_nav.png') -699px -60px;
+}*/
+

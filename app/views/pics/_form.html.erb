@@ -1,0 +1,34 @@
+<% form_for(pic, :html => {:multipart => true}) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <!-- <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 5, :cols => 28 %>
+  </p> -->
+  <p>
+    <%= f.label :main_display, "Make Main Display Photo" %><br />
+    <%= f.check_box :main_display, :checked => true %>
+  </p>
+  <p>
+    <%= f.label :interior, "Interior Photo" %><br />
+    <%= f.check_box :interior %>
+  </p>
+  <p>
+    <%= f.label :exterior, "Exterior Photo" %><br />
+    <%= f.check_box :exterior %>
+  </p>
+  <p>
+    <%= f.label "Select A Project" %><br />
+    <%= collection_select(:pic, :project_id, Project.all, :id, :title) %> or <%= link_to "Add A Project", new_project_path %>
+  </p>
+  <p>
+    <%= f.label :asset, "Upload New Photo" %><br />
+    <%= f.file_field :asset, :size => 16 %>
+  </p>
+  <p>
+    <%= f.submit 'Submit', :class => "btn" %>
+  </p>
+<% end %>

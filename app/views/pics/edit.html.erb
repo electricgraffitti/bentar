@@ -1,0 +1,32 @@
+<h1>Editing pic</h1>
+
+<% form_for(@pic) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :main_display %><br />
+    <%= f.check_box :main_display %>
+  </p>
+  <p>
+    <%= f.label :interior %><br />
+    <%= f.check_box :interior %>
+  </p>
+  <p>
+    <%= f.label :exterior %><br />
+    <%= f.check_box :exterior %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @pic %> |
+<%= link_to 'Back', pics_path %>
