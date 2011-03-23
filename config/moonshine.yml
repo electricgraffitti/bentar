@@ -20,10 +20,10 @@
 #
 # The entries in shared_children are created in #{application}/shared
 :shared_children:
-- system
-- log
-- pids
-- config
+  - system
+  - log
+  - pids
+  - config
 # After specifying a gem with config.gem, run 'rake moonshine:gems'
 # to update config/gems.yml. If the gem depends on native packages, 
 # tell Moonshine here:
