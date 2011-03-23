@@ -2,10 +2,9 @@
 :application: bentar
 :user: rails
 #:time_zone: UTC
-:deploy_to: /var/www/apps/bentar
-:domain: bentar.com
-:domain_aliases:
-  - www.bentar.com
+:deploy_to: /var/www/apps/bentar2
+:domain: bentar.cube2media.com
+
 :repository: git@github.com:electricgraffitti/bentar.git
 :branch: master
 # Use :app_symlinks to setup directories under public/ that you want to persist
