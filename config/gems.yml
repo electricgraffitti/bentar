@@ -3,5 +3,5 @@
 - :name: tmail
 - :source: http://gemcutter.org
   :name: paperclip
-- :version: 2.3.8
+- :version: 2.3.9
   :name: rails
