@@ -1,6 +1,6 @@
 :ruby: ree
 :application: bentar
-:user: root
+:user: rails
 #:time_zone: UTC
 :deploy_to: /var/www/apps/bentar
 :domain: bentar.com
