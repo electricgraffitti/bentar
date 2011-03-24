@@ -1,3 +1,4 @@
+require 'pathname'
 module Moonshine::Manifest::Rails::Rails
 
   # Attempt to bootstrap your application. Calls <tt>rake moonshine:bootstrap</tt>
@@ -17,7 +18,7 @@ module Moonshine::Manifest::Rails::Rails
   #   rake moonshine:app:bootstrap
   #
   # The <tt>moonshine:app:bootstrap</tt> task does nothing by default. If
-  # you'd like to have your application preform any logic on it's first deploy,
+  # you'd like to have your application perform any logic on its first deploy,
   # overwrite this task in your <tt>Rakefile</tt>:
   #
   #   namespace :moonshine do
@@ -29,9 +30,9 @@ module Moonshine::Manifest::Rails::Rails
   #     end
   #   end
   #
-  # All of this assumes one things. That your application can run 'rake
-  # environment' with an empty database. Please ensure your application can do
-  # so!
+  # All of this assumes one thing: that your application can run <tt>rake
+  # environment</tt> with an empty database. Please ensure your application can
+  # do so!
   def rails_bootstrap
     rake 'moonshine:bootstrap',
       :alias => 'rails_bootstrap',
@@ -85,32 +86,71 @@ module Moonshine::Manifest::Rails::Rails
   # <tt>config/gems.yml</tt>, which can be generated from by running
   # <tt>rake moonshine:gems</tt> locally.
   def rails_gems
-    gemrc = {
+    gemrc = HashWithIndifferentAccess.new({
       :verbose => true,
-      :gem => "--no-ri --no-rdoc",
+      :gem => '--no-ri --no-rdoc',
       :update_sources => true,
       :sources => [
-        'http://gemcutter.org',
-        'http://gems.rubyforge.org',
+        'http://rubygems.org',
         'http://gems.github.com'
       ]
-    }
-    gemrc.merge!(configuration[:rubygems]) if configuration[:rubygems]
-    file '/etc/gemrc',
+     })
+     gemrc.merge!(configuration[:rubygems]) if configuration[:rubygems]
+     file '/etc/gemrc',
       :ensure   => :present,
       :mode     => '744',
       :owner    => 'root',
       :group    => 'root',
-      :content  => gemrc.to_yaml
-    #stub for dependencies
+      :content  => gemrc.to_hash.to_yaml
+
+    # stub for puppet dependencies
     exec 'rails_gems', :command => 'true'
-    return unless configuration[:gems]
-    configuration[:gems].each do |gem|
-      gem.delete(:source) if gem[:source] && gemrc[:sources].include?(gem[:source])
-      gem(gem[:name], {
-        :version => gem[:version],
-        :source => gem[:source]
-      })
+
+    gemfile_path = rails_root.join('Gemfile')
+    if gemfile_path.exist?
+      # Bundler is initially installed by deploy:setup in the ruby:install_moonshine_deps task
+      configure(:bundler => {})
+
+      sandbox_environment do
+        require 'bundler'
+        ENV['BUNDLE_GEMFILE'] = gemfile_path.to_s
+        Bundler.load
+
+        # FIXME this method doesn't take into account dependencies's dependencies
+        bundler = if Bundler::VERSION.to_f < 1.0
+                   Bundler.runtime
+                  else
+                   Bundler.load
+                  end
+        bundler_dependencies = bundler.dependencies_for(:default, rails_env.to_sym)
+        bundler_dependencies.each do |dependency|
+          system_dependencies = configuration[:apt_gems][dependency.name.to_sym] || []
+          system_dependencies.each do |system_dependency|
+            package system_dependency,
+              :ensure => :installed,
+              :before => exec('bundle install')
+          end
+        end
+      end     
+      
+      bundle_install_without_groups = configuration[:bundler] && configuration[:bundler][:install_without_groups] || "development test"
+      exec 'bundle install',
+        :command => "bundle install --deployment --path #{configuration[:deploy_to]}/shared/bundle --without #{bundle_install_without_groups}",
+        :cwd => rails_root,
+        :before => exec('rails_gems'),
+        :require => file('/etc/gemrc'),
+        :user => configuration[:user],
+        :timeout => 108000,
+        :logoutput => true
+
+    else
+      return unless configuration[:gems]
+      configuration[:gems].each do |gem|
+        gem(gem[:name], {
+          :version => gem[:version],
+          :source => gem[:source]
+        })
+      end
     end
   end
 
@@ -145,7 +185,6 @@ module Moonshine::Manifest::Rails::Rails
     end
   end
 
-private
   # Creates package("#{name}") with <tt>:provider</tt> set to <tt>:gem</tt>.
   # The given <tt>options[:version]</tt> requirement is tweaked to ensure
   # gems aren't reinstalled on each run. <tt>options[:source]</tt> does what
@@ -180,6 +219,7 @@ private
       :require  => file('/etc/gemrc')
     }
     hash.merge!(:source => options[:source]) if options[:source]
+    hash.merge!(:alias => options[:alias]) if options[:alias]
     #fixup the version required
     exact_dep = Gem::Dependency.new(name, options[:version] || '>0')
     matches = Gem.source_index.search(exact_dep)
@@ -201,6 +241,7 @@ private
     package(name, hash)
   end
 
+  private
   def append_system_dependecies(exact_dep, hash) #:nodoc:
     #fixup the requires key to be an array
     if hash[:require] && !hash[:require].is_a?(Array)
@@ -235,9 +276,17 @@ private
       :environment => "RAILS_ENV=#{ENV['RAILS_ENV']}",
       :require => exec('rake tasks'),
       :logoutput => true,
-      :timeout => -1
+      :timeout => 108000
     }.merge(options)
   )
   end
-
+  
+  # Creates a sandbox environment so that ENV changes are reverted afterwards
+  OLDENV = {}
+  def sandbox_environment
+    OLDENV.replace(ENV)
+    ENV.replace({})
+    yield
+    ENV.replace(OLDENV)
+  end
 end

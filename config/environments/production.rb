@@ -30,3 +30,5 @@ config.action_mailer.delivery_method = :sendmail
 # config.threadsafe!
 
 SITE_URL = "http://www.bentar.com/"
+# Use postfix for mail delivery 
+ActionMailer::Base.delivery_method = :sendmail 
