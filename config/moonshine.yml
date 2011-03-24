@@ -2,9 +2,10 @@
 :application: bentar
 :user: rails
 #:time_zone: UTC
-:deploy_to: /var/www/apps/bentar2
-:domain: bentar.cube2media.com
-
+:deploy_to: /var/www/apps/bentar
+:domain: bentar.com
+:domain_aliases:
+  - www.bentar.com
 :repository: git@github.com:electricgraffitti/bentar.git
 :branch: master
 # Use :app_symlinks to setup directories under public/ that you want to persist
@@ -19,10 +20,10 @@
 #
 # The entries in shared_children are created in #{application}/shared
 :shared_children:
-  - system
-  - log
-  - pids
-  - config
+- system
+- log
+- pids
+- config
 # After specifying a gem with config.gem, run 'rake moonshine:gems'
 # to update config/gems.yml. If the gem depends on native packages, 
 # tell Moonshine here:

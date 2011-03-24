@@ -17,21 +17,4 @@ config.action_controller.perform_caching             = true
 config.action_mailer.raise_delivery_errors = true
 config.action_mailer.delivery_method = :sendmail
 
-
-config.after_initialize do
-  Bullet.enable = true 
-  Bullet.alert = true
-  Bullet.bullet_logger = true  
-  Bullet.console = true
-  Bullet.growl = true
-  Bullet.rails_logger = true
-  Bullet.disable_browser_cache = true
-end
-
-begin
-  require 'ruby-growl'
-  Bullet.growl = true
-rescue MissingSourceFile
-end
-
 SITE_URL = "http://localhost:3000/"

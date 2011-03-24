@@ -1,3 +1,7 @@
 --- 
-- :version: 2.3.4
+- :name: authlogic
+- :name: tmail
+- :source: http://gemcutter.org
+  :name: paperclip
+- :version: 2.3.8
   :name: rails
