@@ -6,6 +6,7 @@
 :domain: bentar.com
 :domain_aliases:
   - www.bentar.com
+  - bentar.cub2media.com
 :repository: git@github.com:electricgraffitti/bentar.git
 :branch: master
 
