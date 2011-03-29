@@ -1,4 +1,7 @@
 --- 
 - :name: authlogic
+- :name: paperclip
+- :name: RedCloth
+- :name: prawn
 - :version: 2.3.9
   :name: rails
