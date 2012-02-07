@@ -434,11 +434,12 @@ ul.bullet_list li {
   margin-top: 30px;
   text-align: center;
   width: 900px;
+	padding-left: 45px;
 }
 #tabs div.nav_center {
 	height:30px;
 	margin:0 auto;
-	width: 74%
+	width: 100%
 }
 #tabs ul.tab_nav li {
 	float:left;

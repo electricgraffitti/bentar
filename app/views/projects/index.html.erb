@@ -11,8 +11,12 @@
         <li><%= link_to "Bars & Restaurants", "#bars"  %></li>
         <li><%= link_to "Retail & Office", "#retail"  %></li>
         <li><%= link_to "Casino & Hospitality", "#casino" %></li>
+				<li><%= link_to "Educational Facilities", '#education' %></li>
       </div>
     </ul>
+		<div id="education">
+      <%= render :partial => 'index_project', :locals => {:projects => @educations} %>
+    </div>
     <div id="cstore">
       <%= render :partial => 'index_project', :locals => {:projects => @cstores} %>
 			<div class="convenience_listing">

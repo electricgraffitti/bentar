@@ -28,6 +28,7 @@ ActionController::Routing::Routes.draw do |map|
   map.retail "bentar-projects-office-and-retail", :controller => "home", :action => "retail"
   map.casino "bentar-projects-casino-and-hospitality", :controller => "home", :action => "casino"
   map.c_store "bentar-projects-fuel-stations-and-c-stores", :controller => "home", :action => "c_store"
+  map.education "bentar-projects-educational-facilities", :controller => "home", :action => "education"
 
   
   

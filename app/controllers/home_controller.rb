@@ -36,4 +36,8 @@ class HomeController < ApplicationController
     @cstores = Project.type("Fuel Stations & C-Stores")
   end
   
+  def education
+    @educations = Project.type("Educational Facilities")
+  end
+  
 end
