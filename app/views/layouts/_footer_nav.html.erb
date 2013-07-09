@@ -7,13 +7,16 @@
     <li><%= link_to "Testimonials", testimonials_path %></li>
     <li><%= link_to "Contact Us", contact_path %></li>
     <li><%= link_to "Privacy Statement", privacy_path %></li>
+    <li>
+    <% if current_admin %>
+     <%= link_to "Log out", admin_logout_path  %>
+    <% else %>	
+     <%= link_to "Admin", admin_login_path %>
+    <% end %>
+    </li>
     
 	</ul>
 </div>
-<div class="nopay">
-	<% if current_admin %>
-   <%= link_to "2", admin_logout_path  %></li>
-  <% else %>	
-   <%= link_to "2", admin_login_path %></li>
-  <% end %>
-</div>
+<!-- <div class="nopay">
+  
+</div> -->

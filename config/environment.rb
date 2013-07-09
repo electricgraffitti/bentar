@@ -22,8 +22,13 @@ Rails::Initializer.run do |config|
   
   # comment out line 26 and uncomment out line 25 to run on local  undo before deploy
   
+  #Need this version for local
   # config.gem "authlogic", :version => '2.1.6'
+  #need this version for deploy
   config.gem "authlogic"
+  #need this version for local
+  # config.gem "paperclip", :version => '2.3.1.1'
+  #need this version for deploy
   config.gem "paperclip"
   config.gem "RedCloth"
   config.gem "prawn"

@@ -19,7 +19,7 @@
     <td><%=h associate.business_name %></td>
     <td><%=h associate.email %></td>
     <% if associate.message %>
-    <td><%=h truncate(associate.message, :length => 150 ) %></td>
+    <td><%=h truncate(associate.message, :length => 10 ) %></td>
     <% else %>
     <td> </td>
     <% end %>
