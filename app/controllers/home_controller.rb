@@ -40,4 +40,8 @@ class HomeController < ApplicationController
     @educations = Project.type("Educational Facilities")
   end
   
+  def airport
+    @airports = Project.type("Airport Concessions")
+  end
+  
 end

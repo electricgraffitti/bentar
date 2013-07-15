@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
     @casinos = Project.type("Casino & Hospitality")
     @cstores = Project.type("Fuel Stations & C-Stores")
     @educations = Project.type("Educational Facilities")
+    @airports = Project.type("Airport Concessions")
     
     respond_to do |format|
       format.html 
